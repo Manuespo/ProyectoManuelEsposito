@@ -1,6 +1,6 @@
 package com.Proyecto.ProyectoManuelEsposito;
 
 public class Nota {
-    private Materia materia;
+    private Alumno alumno;
     private int nota;
 }
