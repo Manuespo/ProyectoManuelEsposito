@@ -21,6 +21,9 @@ public class Alumno {
         this.legajo = legajo;
     }
 
+    public Alumno() {
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -53,7 +56,8 @@ public class Alumno {
         this.legajo = legajo;
     }
 
-    public void agregarAlumnoAArchivo(String nombreArchivo,Alumno nuevoAlumno){
+    public static void agregarAlumnoAArchivo(Alumno nuevoAlumno){
+        String nombreArchivo="Alumnos.json";
         ObjectMapper objectMapper=new ObjectMapper();
         try {
             String datosJson = objectMapper.writeValueAsString(nuevoAlumno);

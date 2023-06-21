@@ -34,7 +34,7 @@ public class ProyectoManuelEspositoApplication {
 			{
 				case  1: menu1();
 					break;
-				case 2:
+				case 2: menu2();
 					break;
 				case 3:
 					break;
@@ -44,7 +44,6 @@ public class ProyectoManuelEspositoApplication {
 		}
 	}
 	private static void menu1(){
-		boolean parar=false;
 		Curso [] cursos=Curso.leerArchivo();
 
 			for (int i=0;i<cursos.length;i++){
@@ -59,9 +58,33 @@ public class ProyectoManuelEspositoApplication {
 		System.out.println("Ingrese nombre del alumno");
 		String nombre=scanner.nextLine();
 		Alumno alumno= Alumno.buscarAlumno(nombre);
+		boolean parar=false;
+		if (alumno==null)
+		{
+			String apellido;
+			int edad;
+			int legajo;
+			System.out.println("Su nombre no se encuentra en el sistema. Procederemos a ingresarlo en el sistema");
+			System.out.println("Ingrese su apellido");
+			apellido=scanner.nextLine();
+			System.out.println("Ingrese su edad");
+			edad=scanner.nextInt();
+			System.out.println("Ingrese su numero de legajo");
+			legajo=scanner.nextInt();
+			alumno=new Alumno(nombre,apellido,edad,legajo);
+			Alumno.agregarAlumnoAArchivo(alumno);
+		}
+
+		while (!parar){
+		}
+		if (alumno==null) {
+			System.out.println("1. Ver datos del alumno");
+			System.out.println("2. Ver notas del alumno");
+			System.out.println("3. Inscribirse a un curso");
+		}
+		else
 		System.out.println(alumno);
 		System.out.println(Materia.notasAlumno(alumno));
-
 	}
 
 }

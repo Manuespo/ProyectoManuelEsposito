@@ -4,6 +4,9 @@ public class Nota {
     private Alumno alumno;
     private int nota;
 
+    public Nota() {
+    }
+
     public Alumno getAlumno() {
         return alumno;
     }

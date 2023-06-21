@@ -54,6 +54,9 @@ public class Materia {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
+    public void agregarAlumnoAMateria(){
+
+    }
     public void agregarMateriaAArchivo(String nombreArchivo,Materia nuevaMateria){
         ObjectMapper objectMapper=new ObjectMapper();
         try {
