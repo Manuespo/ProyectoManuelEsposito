@@ -60,6 +60,7 @@ public class ProyectoManuelEspositoApplication {
 		String nombre=scanner.nextLine();
 		Alumno alumno= Alumno.buscarAlumno(nombre);
 		System.out.println(alumno);
+		System.out.println(Materia.notasAlumno(alumno));
 
 	}
 

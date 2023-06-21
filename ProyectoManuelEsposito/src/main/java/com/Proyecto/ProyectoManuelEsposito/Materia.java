@@ -1,6 +1,8 @@
 package com.Proyecto.ProyectoManuelEsposito;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -78,6 +80,31 @@ public class Materia {
             System.out.println("Ocurrió un error al leer el archivo JSON: " + e.getMessage());
         }
         return null;
+    }
+    public static String notasAlumno(Alumno alumno){
+        String nombreArchivo="Materias.json";
+        String notas="";
+        ObjectMapper objectMapper=new ObjectMapper();
+        try {
+            File archivo= new File(nombreArchivo);
+            Materia[] materias = objectMapper.readValue(archivo, Materia[].class);
+            for (int i=0;i< materias.length;i++)
+            {
+                Materia materia=materias[i];
+                for (int j=0;j<materia.getAlumnos().size();j++){
+                    if (materia.getAlumnos().get(j).getAlumno().equals(alumno)){
+                        notas+=materia.nombre+": "+materia.getAlumnos().get(j).getNota()+'\'';
+                    }
+                }
+            }
+            return notas;
+        } catch (StreamReadException e) {
+            throw new RuntimeException(e);
+        } catch (DatabindException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
