@@ -1,18 +1,22 @@
 package com.Proyecto.ProyectoManuelEsposito;
 
-public class Profesor {
-    private String nombre;
-    private String apellido;
-    private int edad;
-    private int legajo;
-    private String materia;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    public Profesor(String nombre, String apellido, int edad, int legajo, String materia) {
+public class Profesor {
+    @JsonProperty("nombre")
+    private String nombre;
+    @JsonProperty("apellido")
+    private String apellido;
+    @JsonProperty("edad")
+    private int edad;
+    @JsonProperty("edad")
+    private int legajo;
+
+    public Profesor(String nombre, String apellido, int edad, int legajo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.legajo = legajo;
-        this.materia = materia;
     }
 
     public String getNombre() {
@@ -47,14 +51,6 @@ public class Profesor {
         this.legajo = legajo;
     }
 
-    public String getMateria() {
-        return materia;
-    }
-
-    public void setMateria(String materia) {
-        this.materia = materia;
-    }
-
     @Override
     public String toString() {
         return "Profesor{" +
@@ -62,7 +58,6 @@ public class Profesor {
                 ", apellido='" + apellido + '\'' +
                 ", edad=" + edad +
                 ", legajo=" + legajo +
-                ", materia='" + materia + '\'' +
                 '}';
     }
 }

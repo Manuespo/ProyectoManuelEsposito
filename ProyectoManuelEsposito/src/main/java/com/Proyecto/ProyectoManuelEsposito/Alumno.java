@@ -1,5 +1,6 @@
 package com.Proyecto.ProyectoManuelEsposito;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,9 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Alumno {
+    @JsonProperty("nombre")
     private String nombre;
+    @JsonProperty("apellido")
     private String apellido;
+    @JsonProperty("edad")
     private int edad;
+    @JsonProperty("legajo")
     private int legajo;
 
     public Alumno(String nombre, String apellido, int edad, int legajo) {

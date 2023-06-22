@@ -1,7 +1,11 @@
 package com.Proyecto.ProyectoManuelEsposito;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Nota {
+    @JsonProperty("alumno")
     private Alumno alumno;
+    @JsonProperty("nota")
     private int nota;
 
     public Nota() {

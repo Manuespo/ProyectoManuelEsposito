@@ -1,5 +1,6 @@
 package com.Proyecto.ProyectoManuelEsposito;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -11,9 +12,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Materia {
+    @JsonProperty("nombre")
     private String nombre;
+    @JsonProperty("alumnos")
     private ArrayList<Nota> alumnos;
+    @JsonProperty("infoMateria")
     private String infoMateria;
+    @JsonProperty("profesor")
     private Profesor profesor;
 
     public Materia(String nombre, ArrayList<Nota> alumnos, String infoMateria, Profesor profesor) {
@@ -21,6 +26,17 @@ public class Materia {
         this.alumnos = alumnos;
         this.infoMateria = infoMateria;
         this.profesor = profesor;
+    }
+
+    public Materia(String nombre, String infoMateria, Profesor profesor) {
+        this.nombre = nombre;
+        this.infoMateria = infoMateria;
+        this.profesor = profesor;
+    }
+
+    public Materia(String nombre, String infoMateria) {
+        this.nombre = nombre;
+        this.infoMateria = infoMateria;
     }
 
     public String getNombre() {
@@ -54,10 +70,9 @@ public class Materia {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
-    public void agregarAlumnoAMateria(){
 
-    }
-    public void agregarMateriaAArchivo(String nombreArchivo,Materia nuevaMateria){
+    public static void agregarMateriaAArchivo(Materia nuevaMateria){
+        String nombreArchivo="Materias.json";
         ObjectMapper objectMapper=new ObjectMapper();
         try {
             String datosJson = objectMapper.writeValueAsString(nuevaMateria);
